@@ -115,8 +115,7 @@ def removeIng():
         ing5_text.grid_forget()
         i-=1
 
-def foo():
-    print("test")
+
 
 def search_fxn():
     prev_rec['state'] = 'disabled'
@@ -142,7 +141,6 @@ def search_fxn():
         index_to_cosine[i] = how_similar/len(L)
    
     index_to_cosine = sorted(index_to_cosine.items(), key=lambda x: x[1], reverse=True)
-    print(index_to_cosine)
     if index_to_cosine[0][1]==0:
         dish_name.config(text= "No recipe matching ingredients found")
         ima = Image.open("notfound.png")
@@ -156,6 +154,8 @@ def search_fxn():
     dish_text = df.iloc[dish_index]['Title']
     if(index_to_cosine[1][1]==0):
         next_rec['state'] = 'disabled'
+    else:
+        next_rec['state'] = 'active'
         
     URL = df.iloc[dish_index]['URL']
     recipe_text = df.iloc[dish_index]['Recipe']
